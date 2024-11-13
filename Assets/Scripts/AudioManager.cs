@@ -21,8 +21,8 @@ namespace DefaultNamespace
 
         public Action VolumeSettingsChanged;
         
-        public float MusicVolume;
-        public float SFXVolume;
+        public float MusicVolume = 1f;
+        public float SFXVolume = 1f;
 
         
         public void ChangeAudioSettings(float newMusicVolume, float newSFXVolume)

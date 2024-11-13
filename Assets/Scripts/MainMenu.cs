@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
@@ -9,11 +10,35 @@ namespace DefaultNamespace
         public Transform mainMenuPanel;
         public Transform settingsPanel;
 
+        public bool allowMenuToggle;
+        
+        private bool inMenuNavigation;
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                CloseAllPages();
+                if (inMenuNavigation)
+                {
+                    CloseAllPages();
+                    return;
+                }
+
+                if (!allowMenuToggle)
+                {
+                    return;
+                }
+                
+                switch (mainMenuPanel.gameObject.activeSelf)
+                {
+                    case true:
+                        mainMenuPanel.gameObject.SetActive(false);
+                        break;
+                    case false:
+                        mainMenuPanel.gameObject.SetActive(true);
+                        break;
+                }
+                
             }
         }
 
@@ -27,10 +52,16 @@ namespace DefaultNamespace
             SceneManager.LoadScene("Scenes/Main Menu");
         }
 
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+
         public void ToggleSettings(bool state)
         {
             settingsPanel.gameObject.SetActive(state);
             mainMenuPanel.gameObject.SetActive(!state);
+            inMenuNavigation = state;
         }
 
         private void ToggleCredits(bool state)

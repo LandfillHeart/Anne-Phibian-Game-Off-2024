@@ -8,12 +8,20 @@ namespace DefaultNamespace
         private AudioSource source;
         public bool musicVolume;
         
-        private void Start()
+        private void OnStart()
         {
             source = GetComponent<AudioSource>();
             AudioManager.Instance.VolumeSettingsChanged += () =>
             {
-                source.volume = AudioManager.Instance.MusicVolume;
+                source.volume = musicVolume ? AudioManager.Instance.MusicVolume : AudioManager.Instance.SFXVolume;
+            };
+        }
+
+        private void OnDestroy()
+        {
+            AudioManager.Instance.VolumeSettingsChanged -= () =>
+            {
+                source.volume = musicVolume ? AudioManager.Instance.MusicVolume : AudioManager.Instance.SFXVolume;
             };
         }
     }

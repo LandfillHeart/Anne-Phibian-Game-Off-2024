@@ -23,9 +23,18 @@ namespace DefaultNamespace
             musicSlider.onValueChanged.AddListener(delegate { UpdateFields(); });
             sfxSlider.onValueChanged.AddListener(delegate { UpdateFields(); });
 
-            musicSlider.value = 100f;
-            sfxSlider.value = 100f;
+            musicSlider.value = AudioManager.Instance.MusicVolume * 100;
+            sfxSlider.value = AudioManager.Instance.SFXVolume * 100;
 
+            Debug.Log(sfxSlider.value);
+            Debug.Log(AudioManager.Instance.SFXVolume);
+            
+        }
+
+        private void OnDestroy()
+        {
+            musicSlider.onValueChanged.RemoveListener(delegate { UpdateFields(); });
+            sfxSlider.onValueChanged.RemoveListener(delegate { UpdateFields(); });
         }
 
         private void Update()

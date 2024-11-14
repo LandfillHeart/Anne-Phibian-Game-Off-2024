@@ -7,8 +7,7 @@ namespace DefaultNamespace
     public class GameplaySceneManager : MonoBehaviour
     {
         public string[] gameStartDialogues;
-        
-        
+
         private void Start()
         {
             InteractionManager.Instance.InteractionReady = false;
@@ -19,7 +18,7 @@ namespace DefaultNamespace
         {
             for (int i = 0; i < dialoguesReference.Length; i++)
             {
-                UIManager.Instance.SetDialogueBoxContent(dialoguesReference[i]);
+                UIManager.Instance.SetDialogueBoxContent(dialoguesReference[i], CharacterReference.Instance.detective);
                 while (UIManager.Instance.CloseDialogueOnClick)
                 {
                     yield return null;

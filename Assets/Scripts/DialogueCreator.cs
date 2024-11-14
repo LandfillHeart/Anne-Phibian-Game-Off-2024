@@ -6,6 +6,8 @@ namespace DefaultNamespace
     public class DialogueCreator : MonoBehaviour
     {
         public Interactable interactable;
+
+        public CharacterData speakingCharacter;
         
         public string dialogueContent;
 
@@ -17,7 +19,7 @@ namespace DefaultNamespace
 
         private void ShowDialogue()
         {
-            UIManager.Instance.SetDialogueBoxContent(dialogueContent);
+            UIManager.Instance.SetDialogueBoxContent(dialogueContent, speakingCharacter);
         }
         
     }

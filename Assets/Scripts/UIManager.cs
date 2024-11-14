@@ -47,7 +47,7 @@ namespace DefaultNamespace
             dialogueBoxPanel.SetActive(state);
         }
 
-        public void SetDialogueBoxContent(string content)
+        public void SetDialogueBoxContent(string content, CharacterData characterData)
         {
             if (!dialogueBoxPanel.activeSelf)
             {
@@ -55,7 +55,7 @@ namespace DefaultNamespace
             }
 
             InteractionManager.Instance.InteractionReady = false;
-            dialogueBox.SetContent(content);
+            dialogueBox.SetContent(content, characterData);
             closeDialogueOnClick = true;
         }
         

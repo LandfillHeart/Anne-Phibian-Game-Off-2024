@@ -10,6 +10,10 @@ namespace DefaultNamespace
         
         void OnMouseEnter()
         {
+            if (!InteractionManager.Instance.InteractionReady)
+            {
+                return;
+            }
             hoverRenderer.enabled = true;
         }
 

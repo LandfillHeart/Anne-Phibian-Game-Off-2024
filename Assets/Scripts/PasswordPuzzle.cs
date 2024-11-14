@@ -9,7 +9,7 @@ namespace DefaultNamespace
     public class PasswordPuzzle : MonoBehaviour
     {
         private Interactable interactable;
-        
+
         public TMP_InputField inputField;
 
         public TextMeshProUGUI readonlyContent;
@@ -153,7 +153,7 @@ namespace DefaultNamespace
 
             if (firstInteraction)
             {
-                UIManager.Instance.SetDialogueBoxContent("Needs a password. Maybe I can find something useful by nosing around");
+                UIManager.Instance.SetDialogueBoxContent("Needs a password. Maybe I can find something useful by nosing around", CharacterReference.Instance.detective);
                 firstInteraction = false;
             }
             

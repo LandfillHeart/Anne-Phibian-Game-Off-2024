@@ -9,6 +9,7 @@ namespace DefaultNamespace
 
         public CharacterData speakingCharacter;
         
+        [TextArea(10, 10)]
         public string dialogueContent;
 
         private void Start()

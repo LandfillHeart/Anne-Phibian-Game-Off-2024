@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class BrowserToggle : MonoBehaviour
+    public class DesktopNavigation : MonoBehaviour
     {
         public ComputerDesktop desktop;
         
-        public GameObject browserWindow;
+        public GameObject deepNavigation;
 
         private Interactable interactable;
 
@@ -20,12 +20,12 @@ namespace DefaultNamespace
 
         private void ToggleBrowser(bool state)
         {
-            if (!state && !browserWindow.activeSelf)
+            if (!state && !deepNavigation.activeSelf)
             {
                 return;
             }
             
-            browserWindow.SetActive(state);
+            deepNavigation.SetActive(state);
             desktop.ToggleAllIcons(!state);
         }
         

@@ -1639,6 +1639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuPanel: {fileID: 140380821}
   settingsPanel: {fileID: 1634325456}
+  allowMenuToggle: 0
 --- !u!1 &1947143219
 GameObject:
   m_ObjectHideFlags: 0

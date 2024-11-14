@@ -10,7 +10,7 @@ namespace DefaultNamespace
         
         void OnMouseEnter()
         {
-            if (!InteractionManager.Instance.InteractionReady)
+            if (!InteractionManager.Instance.InteractionReady || MainMenu.Instance.GamePaused)
             {
                 return;
             }

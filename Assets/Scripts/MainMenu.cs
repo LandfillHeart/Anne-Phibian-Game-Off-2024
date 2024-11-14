@@ -7,13 +7,23 @@ namespace DefaultNamespace
 {
     public class MainMenu : MonoBehaviour
     {
+        private static MainMenu instance;
+        public static MainMenu Instance => instance;
+        
         public Transform mainMenuPanel;
         public Transform settingsPanel;
 
         public bool allowMenuToggle;
         
         private bool inMenuNavigation;
+
+        public bool GamePaused => mainMenuPanel.gameObject.activeSelf;
         
+        private void Awake()
+        {
+            instance = this;
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))

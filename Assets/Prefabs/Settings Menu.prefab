@@ -2006,8 +2006,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "(Note: key rebings are not available at this time)\nMain Menu\nInteract:
-    \n- Left Mouse Button\nGo Back:\n- Escape\n\nInteract:\n- Left Mouse Button\nGo
-    Back:\n- Right Mouse Button\nOpen Settings:\n- ESC"
+    \n- Left Mouse Button\nGo Back:\n- Escape\n\nGameplay\nInteract:\n- Left Mouse
+    Button\nGo Back:\n- Right Mouse Button\nOpen Settings:\n- ESC\nSkip Dialogue:\n-
+    Left Mouse Button"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

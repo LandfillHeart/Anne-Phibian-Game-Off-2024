@@ -52,6 +52,11 @@ public class InteractionManager : MonoBehaviour
     // we dont have that many inputs - we use late update so that it can check to open the dialogue after the ui manager already checked if we should close the dialogue
     private void LateUpdate()
     {
+        if (MainMenu.Instance.GamePaused)
+        {
+            return;
+        }
+        
         if (Input.GetMouseButtonDown(1))
         {
             ForceRemoveInteractionState?.Invoke();

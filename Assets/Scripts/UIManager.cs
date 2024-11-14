@@ -32,6 +32,11 @@ namespace DefaultNamespace
             {
                 return;
             }
+
+            if (MainMenu.Instance.GamePaused)
+            {
+                return;
+            }
             
             if (Input.GetMouseButtonDown(0))
             {

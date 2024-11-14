@@ -17,7 +17,7 @@ namespace DefaultNamespace
         
         private bool inMenuNavigation;
 
-        public bool GamePaused => mainMenuPanel.gameObject.activeSelf;
+        public bool GamePaused => mainMenuPanel.gameObject.activeSelf || settingsPanel.gameObject.activeSelf;
         
         private void Awake()
         {

@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Interactable : MonoBehaviour
 {
     public bool interactionActive;
+
+    public bool preserveOtherInteractions;
     
     public Action OnInteractStart;
     public Action OnInteractEnd;

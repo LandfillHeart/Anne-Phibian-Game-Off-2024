@@ -3,7 +3,7 @@ Game Off 2024 submission. <br />
 <br />
 Made by: <br />
 LandfillHeart <br />
-Froo.gss <br />
+Froo.gss - https://www.instagram.com/froo.gss/ <br />
 <br />
 Additional Credits: <br />
 C-64 Font: https://jamiecross.itch.io/c-64-font-free <br />

@@ -44,7 +44,7 @@ public class Interactable : MonoBehaviour
         {
             return;
         }
-
+        
         interactionActive = false;
         OnInteractEnd?.Invoke();
         //InteractionManager.Instance.InteractionReady = true;

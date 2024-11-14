@@ -71,9 +71,7 @@ public class InteractionManager : MonoBehaviour
         {
             return;
         }
-        
-        
-        
+
         Ray ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         //Debug.DrawRay(ray.origin, ray.direction * 100f, Color.blue, 30f);
@@ -84,13 +82,14 @@ public class InteractionManager : MonoBehaviour
         }
 
         latestInteractable = hit.transform.GetComponent<Interactable>();
-
+        latestInteractable.InteractionStarted();
+        
         if (!latestInteractable.preserveOtherInteractions)
         {
             RemoveInteractionState?.Invoke(latestInteractable);
         }
         
-        latestInteractable.InteractionStarted();
+        
     }
     
 

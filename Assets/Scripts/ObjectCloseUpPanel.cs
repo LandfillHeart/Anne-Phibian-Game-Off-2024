@@ -47,7 +47,6 @@ namespace DefaultNamespace
             backgroundBlur.enabled = state;
             closeUpObject.enabled = state;
             CloseUpPanelActive = state;
-            InteractionManager.Instance.InteractionReady = !state;
         }
 
 

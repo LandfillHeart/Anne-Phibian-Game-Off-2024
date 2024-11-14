@@ -10,7 +10,7 @@ namespace DefaultNamespace
         
         void OnMouseEnter()
         {
-            if (!InteractionManager.Instance.InteractionReady || MainMenu.Instance.GamePaused)
+            if (ObjectCloseUpPanel.Instance.CloseUpPanelActive || !InteractionManager.Instance.InteractionReady || MainMenu.Instance.GamePaused )
             {
                 return;
             }

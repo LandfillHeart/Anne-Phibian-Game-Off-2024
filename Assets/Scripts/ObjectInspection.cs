@@ -12,8 +12,8 @@ namespace DefaultNamespace
         private void Start()
         {
             interactable.OnInteractStart += () => { ToggleInteraction(true); };
-            interactable.OnInteractRepeated += () => { ToggleInteraction(true); };
-            interactable.OnInteractForcedEnd += () => { ToggleInteraction(false); };
+            //interactable.OnInteractRepeated += () => { ToggleInteraction(true); };
+            //interactable.OnInteractForcedEnd += () => { ToggleInteraction(false); };
         }
 
         private void ToggleInteraction(bool state)
@@ -21,6 +21,7 @@ namespace DefaultNamespace
             if (state)
             {
                 ObjectCloseUpPanel.Instance.SetCloseUpContent(objectSprite);
+                interactable.interactionActive = false;
                 return;
             }
             

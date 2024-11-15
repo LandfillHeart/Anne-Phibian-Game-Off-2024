@@ -18,7 +18,7 @@ namespace DefaultNamespace
         private void Start()
         {
             interactable = GetComponent<Interactable>();
-            interactable.OnInteractStart += ToggleTileState;
+            //interactable.OnInteractStart += ToggleTileState;
             interactable.OnInteractRepeated += ToggleTileState;
             tileActive = false;
             tileSprite.enabled = false;
@@ -29,6 +29,8 @@ namespace DefaultNamespace
             tileActive = !tileActive;
             tileSprite.enabled = tileActive;
         }
+        
+        
         
     }
 }

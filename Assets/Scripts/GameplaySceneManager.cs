@@ -12,11 +12,15 @@ namespace DefaultNamespace
         public static GameplaySceneManager Instance => instance;
         
         public string[] gameStartDialogues;
-
+        public string[] sudokuSolvedDetectiveDialogues;
+        public string[] sudokuSolvedAssistantDialogues;
+        
         public Image cutsceneImage;
         public Image cutsceneBgImage;
-        public TextMeshProUGUI cutsceneText; 
+        public TextMeshProUGUI cutsceneText;
 
+        public Action SudokuPuzzleBeaten;
+        
         public float fadeDuration = 3f;
         private float elapsedTime;
 
@@ -41,6 +45,19 @@ namespace DefaultNamespace
             Camera.main.transform.position = endPosition;
         }
 
+        public void SudokuPuzzleSolved()
+        {
+            StartCoroutine(SudokuDialogues());
+            SudokuPuzzleBeaten?.Invoke();
+        }
+
+        private IEnumerator SudokuDialogues()
+        {
+            yield return StartCoroutine(MultipleDialogues(sudokuSolvedDetectiveDialogues, CharacterReference.Instance.detective));
+            yield return StartCoroutine(MultipleDialogues(sudokuSolvedAssistantDialogues, CharacterReference.Instance.assistant));
+
+        }
+        
         private IEnumerator StartingCutscene()
         {
             InteractionManager.Instance.InteractionReady = false;
@@ -77,16 +94,16 @@ namespace DefaultNamespace
             cutsceneBgImage.enabled = false;
 
             
-            StartCoroutine(MultipleDialogues(gameStartDialogues));
+            StartCoroutine(MultipleDialogues(gameStartDialogues, CharacterReference.Instance.detective));
 
 
         }
         
-        private IEnumerator MultipleDialogues(string[] dialoguesReference)
+        private IEnumerator MultipleDialogues(string[] dialoguesReference, CharacterData speaker)
         {
             for (int i = 0; i < dialoguesReference.Length; i++)
             {
-                UIManager.Instance.SetDialogueBoxContent(dialoguesReference[i], CharacterReference.Instance.detective);
+                UIManager.Instance.SetDialogueBoxContent(dialoguesReference[i], speaker);
                 while (UIManager.Instance.CloseDialogueOnClick)
                 {
                     yield return null;

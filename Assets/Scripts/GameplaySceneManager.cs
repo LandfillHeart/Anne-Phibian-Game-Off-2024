@@ -8,6 +8,9 @@ namespace DefaultNamespace
 {
     public class GameplaySceneManager : MonoBehaviour
     {
+        private static GameplaySceneManager instance;
+        public static GameplaySceneManager Instance => instance;
+        
         public string[] gameStartDialogues;
 
         public Image cutsceneImage;
@@ -22,6 +25,7 @@ namespace DefaultNamespace
         
         private void Start()
         {
+            instance = this;
             InteractionManager.Instance.InteractionReady = false;
             colorCache = new Color();
             bgColorCache = new Color();
@@ -29,6 +33,12 @@ namespace DefaultNamespace
             bgColorCache = cutsceneBgImage.color;
             colorCache.a = 0f;
             StartCoroutine(StartingCutscene());
+        }
+
+        // to use with buttons in game
+        public void MoveGameCamera(Vector3 endPosition)
+        {
+            Camera.main.transform.position = endPosition;
         }
 
         private IEnumerator StartingCutscene()
@@ -85,6 +95,6 @@ namespace DefaultNamespace
             }
             
         }
-        
+
     }
 }

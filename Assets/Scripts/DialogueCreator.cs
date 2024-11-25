@@ -16,6 +16,7 @@ namespace DefaultNamespace
         {
             interactable = GetComponent<Interactable>();
             interactable.OnInteractStart += ShowDialogue;
+            interactable.OnInteractRepeated += ShowDialogue;
         }
 
         private void ShowDialogue()

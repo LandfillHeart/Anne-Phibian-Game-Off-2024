@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -15,7 +17,8 @@ namespace DefaultNamespace
         public string[] sudokuSolvedDetectiveDialogues;
         public string[] sudokuSolvedAssistantDialogues;
         
-        public Image cutsceneImage;
+        public Image startingCutsceneImage;
+        public Image endingCutsceneImage;
         public Image cutsceneBgImage;
         public TextMeshProUGUI cutsceneText;
 
@@ -33,7 +36,7 @@ namespace DefaultNamespace
             InteractionManager.Instance.InteractionReady = false;
             colorCache = new Color();
             bgColorCache = new Color();
-            colorCache = cutsceneImage.color;
+            //colorCache = cutsceneImage.color;
             bgColorCache = cutsceneBgImage.color;
             colorCache.a = 0f;
             StartCoroutine(StartingCutscene());
@@ -50,19 +53,31 @@ namespace DefaultNamespace
             StartCoroutine(SudokuDialogues());
             SudokuPuzzleBeaten?.Invoke();
         }
-
+        
         private IEnumerator SudokuDialogues()
         {
             yield return StartCoroutine(MultipleDialogues(sudokuSolvedDetectiveDialogues, CharacterReference.Instance.detective));
             yield return StartCoroutine(MultipleDialogues(sudokuSolvedAssistantDialogues, CharacterReference.Instance.assistant));
 
         }
-        
+
         private IEnumerator StartingCutscene()
+        {
+            yield return StartCoroutine(SimpleCutscene(startingCutsceneImage));
+            yield return StartCoroutine(MultipleDialogues(gameStartDialogues, CharacterReference.Instance.detective));
+        }
+
+        private IEnumerator EndingCutscene()
+        {
+            yield return StartCoroutine(SimpleCutscene(endingCutsceneImage));
+            SceneManager.LoadScene("Main Menu");
+        }
+
+        private IEnumerator SimpleCutscene(Image cutsceneImage)
         {
             InteractionManager.Instance.InteractionReady = false;
             elapsedTime = 0f;
-
+            colorCache = cutsceneImage.color;
             while (elapsedTime <= fadeDuration)
             {
                 cutsceneImage.color = colorCache;
@@ -94,7 +109,7 @@ namespace DefaultNamespace
             cutsceneBgImage.enabled = false;
 
             
-            StartCoroutine(MultipleDialogues(gameStartDialogues, CharacterReference.Instance.detective));
+            
 
 
         }

@@ -12,6 +12,7 @@ namespace DefaultNamespace
         
         public Transform mainMenuPanel;
         public Transform settingsPanel;
+        public Transform creditsPanel;
 
         public bool allowMenuToggle;
         
@@ -74,15 +75,41 @@ namespace DefaultNamespace
             inMenuNavigation = state;
         }
 
-        private void ToggleCredits(bool state)
+        public void ToggleCredits(bool state)
         {
-            //CloseAllPages();
+            mainMenuPanel.gameObject.SetActive(!state);
+            creditsPanel.gameObject.SetActive(state);
+            inMenuNavigation = state;
         }
         
         private void CloseAllPages()
         {
             ToggleSettings(false);
+            if (!creditsPanel)
+            {
+                return;
+            }
             ToggleCredits(false);
+        }
+
+        public void OpenGitHub()
+        {
+            Application.OpenURL("https://github.com/LandfillHeart");
+        }
+
+        public void OpenInstagram()
+        {
+            Application.OpenURL("https://www.instagram.com/froo.gss/");
+        }
+
+        public void OpenTypewriterAsset()
+        {
+            Application.OpenURL("https://www.1001fonts.com/breamcatcher-font.html");
+        }
+
+        public void OpenCommodoreAsset()
+        {
+            Application.OpenURL("https://jamiecross.itch.io/c-64-font-free");
         }
         
     }

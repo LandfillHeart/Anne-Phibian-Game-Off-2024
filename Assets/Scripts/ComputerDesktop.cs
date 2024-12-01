@@ -6,7 +6,6 @@ namespace DefaultNamespace
     public class ComputerDesktop : MonoBehaviour
     {
         public GameObject browserIcon;
-        public GameObject fileIcon;
         public GameObject diskIcon;
 
         public HoverOutline computerHoverable;
@@ -19,7 +18,6 @@ namespace DefaultNamespace
         public void ToggleAllIcons(bool state)
         {
             browserIcon.SetActive(state);
-            fileIcon.SetActive(state);
             diskIcon.SetActive(state);
         }
         

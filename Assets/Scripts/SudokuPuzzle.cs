@@ -17,10 +17,12 @@ namespace DefaultNamespace
 
         public TextMeshProUGUI sudokuTextContent;
         public TextMeshProUGUI sudokuSolutionStateText;
-
+        public TextMeshProUGUI virusText;
+        
         private PuzzleState currentState;
 
         private bool puzzleComplete;
+        
 
         /*
         private readonly PuzzleState[] expectedSolution = new[]
@@ -38,6 +40,11 @@ namespace DefaultNamespace
 
         private void OnEnable()
         {
+            if (puzzleComplete)
+            {
+                virusText.enabled = true;
+                return;
+            }
             ChangeState(PuzzleState.Red);
             sudokuTextContent.enabled = true;
         }
@@ -45,6 +52,8 @@ namespace DefaultNamespace
         private void OnDisable()
         {
             sudokuTextContent.enabled = false;
+            sudokuSolutionStateText.enabled = false;
+            virusText.enabled = false;
         }
 
         public void ChangeState(PuzzleState newState)
@@ -119,6 +128,7 @@ namespace DefaultNamespace
                 sudokuSolutionStateText.enabled = true;
                 yield return new WaitForSeconds(0.75f);
                 GameplaySceneManager.Instance.SudokuPuzzleSolved();
+                SolvedState();
                 yield break;
             }
             
@@ -134,6 +144,21 @@ namespace DefaultNamespace
                 colorToggle.gameObject.SetActive(true);
             }
             
+        }
+
+        private void SolvedState()
+        {
+            puzzleComplete = true;
+            sudokuTextContent.enabled = false;
+            sudokuSolutionStateText.enabled = false;
+            virusText.enabled = true;
+            gridRed.SetActive(false);
+            gridBlue.SetActive(false);
+            gridGreen.SetActive(false);
+            foreach (var colorToggle in colorToggles)
+            {
+                colorToggle.gameObject.SetActive(false);
+            }
         }
         
         

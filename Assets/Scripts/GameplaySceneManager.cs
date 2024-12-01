@@ -22,17 +22,21 @@ namespace DefaultNamespace
         public Image cutsceneBgImage;
         public TextMeshProUGUI cutsceneText;
 
-        public Action SudokuPuzzleBeaten;
+        public Action SudokuPuzzleSolvedEvent;
         
         public float fadeDuration = 3f;
         private float elapsedTime;
 
         private Color colorCache;
         private Color bgColorCache;
-        
-        private void Start()
+
+        private void Awake()
         {
             instance = this;
+        }
+
+        private void Start()
+        {
             InteractionManager.Instance.InteractionReady = false;
             colorCache = new Color();
             bgColorCache = new Color();
@@ -51,7 +55,12 @@ namespace DefaultNamespace
         public void SudokuPuzzleSolved()
         {
             StartCoroutine(SudokuDialogues());
-            SudokuPuzzleBeaten?.Invoke();
+            SudokuPuzzleSolvedEvent?.Invoke();
+        }
+
+        public void TriggerGameEnd()
+        {
+            StartCoroutine(EndingCutscene());
         }
         
         private IEnumerator SudokuDialogues()
@@ -69,6 +78,13 @@ namespace DefaultNamespace
 
         private IEnumerator EndingCutscene()
         {
+            
+            cutsceneText.enabled = true;
+            cutsceneBgImage.enabled = true;
+            cutsceneBgImage.color = Color.black;
+            endingCutsceneImage.gameObject.SetActive(true);
+            colorCache = endingCutsceneImage.color;
+            colorCache.a = 0f;
             yield return StartCoroutine(SimpleCutscene(endingCutsceneImage));
             SceneManager.LoadScene("Main Menu");
         }

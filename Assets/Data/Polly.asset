@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Polly
   m_EditorClassIdentifier: 
   name: Polly
-  icon: {fileID: 0}
+  icon: {fileID: -1668086615, guid: bc5773a3eea4ba74aa31c2b2cf96df61, type: 3}
